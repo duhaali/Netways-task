@@ -11,7 +11,7 @@ import { User, UserService } from '../services/user.service';
   styleUrls: ['./users.component.css']
 })
 export class UsersComponent implements OnInit {
-  displayedColumns = ['id', 'name', 'birthDate', 'country', 'address', 'isActive', 'salary', 'actions'];
+  displayedColumns = ['profilePicture', 'name', 'birthDate', 'country', 'address', 'isActive', 'salary', 'actions'];
   users$;
 
   constructor(private dialog: MatDialog, private router: Router, public usersService: UserService) { }

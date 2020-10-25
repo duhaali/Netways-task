@@ -15,6 +15,7 @@ interface DialogData {
 })
 export class AddUserFormComponent implements OnInit {
   profileForm: FormGroup;
+  userProfilePicture;
 
   constructor(
     private dialogRef: MatDialogRef<AddUserFormComponent>,
@@ -31,12 +32,28 @@ export class AddUserFormComponent implements OnInit {
       address: new FormControl(user?.address || ''),
       salary: new FormControl(user?.salary || ''),
       isActive: new FormControl(user?.isActive || ''),
+      profilePicture: new FormControl(user?.profilePicture || null)
     });
   }
 
   onSubmit() {
     const user = this.data?.user;
-    this.usersService.updateUsersList(this.profileForm.value, user?.id);
+    const newUser: User = {
+      ...this.profileForm.value,
+      profilePicture: this.userProfilePicture
+    }
+    console.log(newUser)
+    this.usersService.updateUsersList(newUser, user?.id);
     this.dialogRef.close();
+  }
+
+  setImage(event) {
+    const file = event.target.files[0];
+    
+    const fileReader = new FileReader();
+    fileReader.onload = e => {
+      this.userProfilePicture = e.target.result;
+    }
+    fileReader.readAsDataURL(file);
   }
 }

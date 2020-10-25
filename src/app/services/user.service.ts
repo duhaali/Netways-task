@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { BehaviorSubject } from 'rxjs';
 
-import USERS from "../mock-data/index.json";
+import { USERS } from "../mock-data";
 
 export interface User {
   id: number;
@@ -11,6 +11,7 @@ export interface User {
   address: string;
   isActive: string;
   salary: string;
+  profilePicture: any;
 }
 
 @Injectable({
