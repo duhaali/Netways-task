@@ -1,22 +1,20 @@
 [
   {
-    "position": 1,
+    "id": 0,
     "name": "ali",
-    "BirthDate": "15/5/1992",
-    "Country": "jordan",
-    "Address": "Amman",
+    "birthDate": "15/5/1992",
+    "country": "jordan",
+    "address": "Amman",
     "isActive": "true",
-    "Salary": "800$",
-    "ProfilePicture": "image1.jpg"
+    "salary": 800
   },
   {
-    "position": 2,
+    "id": 1,
     "name": "alaa",
-    "BirthDate": "1/6/1995",
-    "Country": "jordan",
-    "Address": "Amman",
+    "birthDate": "1/6/1995",
+    "country": "jordan",
+    "address": "Amman",
     "isActive": "true",
-    "Salary": "1000$",
-    "ProfilePicture": "image1.jpg"
+    "salary": 1000
   }
 ]

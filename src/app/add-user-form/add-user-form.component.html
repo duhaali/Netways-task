@@ -4,36 +4,32 @@
             <mat-label>Name</mat-label>
             <input matInput formControlName="name" required>
         </mat-form-field>
-        <!-- <mat-form-field  class="field" appearance="fill">
-            <mat-label> Birth Date:</mat-label>
-            <input matInput formControlName="BirthDate">
-        </mat-form-field> -->
         <mat-form-field appearance="fill">
             <mat-label>Choose a date</mat-label>
-            <input matInput [matDatepicker]="BirthDate" formControlName="BirthDate">
-            <mat-datepicker-toggle matSuffix [for]="BirthDate"></mat-datepicker-toggle>
-            <mat-datepicker #BirthDate></mat-datepicker>
+            <input matInput [matDatepicker]="birthDate" formControlName="birthDate">
+            <mat-datepicker-toggle matSuffix [for]="birthDate"></mat-datepicker-toggle>
+            <mat-datepicker #birthDate></mat-datepicker>
         </mat-form-field>
     </div>
     <div class="rows">
-        <mat-form-field  class="field" appearance="fill">
+        <mat-form-field class="field" appearance="fill">
             <mat-label>Country</mat-label>
-            <input matInput  formControlName="Country" required>
+            <input matInput formControlName="country" required>
         </mat-form-field>
-        <mat-form-field  class="field" appearance="fill">
+        <mat-form-field class="field" appearance="fill">
             <mat-label>Address</mat-label>
-            <input matInput  formControlName="Address">
+            <input matInput formControlName="address">
         </mat-form-field>
     </div>
     <div class="rows">
-        <mat-form-field  class="field" appearance="fill">
+        <mat-form-field class="field" appearance="fill">
             <mat-label>Salary</mat-label>
-            <input matInput  formControlName="Salary">
+            <input matInput formControlName="salary">
         </mat-form-field>
     </div>
     <div class="rows">
-        
+        <button mat-raised-button type="submit" [disabled]="!profileForm.valid" style="margin: auto;">
+            {{this.data?.user ? 'Update' : 'Add'}}
+        </button>
     </div>
-    
-    <button mat-raised-button type="submit" [disabled]="!profileForm.valid" >Submit</button>
-  </form>
+</form>

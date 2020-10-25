@@ -1,63 +1,32 @@
-import { Component, OnInit, Inject } from '@angular/core';
-import {MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
-import { AddUserFormComponent } from '../add-user-form/add-user-form.component';
-import users from "../mock-data/index.json"
+import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-export interface DialogData {
-  animal: 'panda' | 'unicorn' | 'lion';
-}
 
-export interface PeriodicElement {
-  position: number,
-  name: string,
-  BirthDate: string,
-  Country: string,
-  Address: string,
-  isActive: string,
-  Salary: string,
-  ProfilePicture: string
-}
-const ELEMENT_DATA : PeriodicElement[] = [
-  {
-    position: 1,
-    name: "ali",
-    BirthDate: "15/5/1992",
-    Country: "jordan",
-    Address: "Amman",
-    isActive: "true",
-    Salary: "800$",
-    ProfilePicture: "image1.jpg"
-  },
-  {
-    position: 2,
-    name: "alaa",
-    BirthDate: "1/6/1995",
-    Country: "jordan",
-    Address: "Amman",
-    isActive: "true",
-    Salary: "1000$",
-    ProfilePicture: "image1.jpg"
-  }
-]
+import { AddUserFormComponent } from '../add-user-form/add-user-form.component';
+import { User, UserService } from '../services/user.service';
+
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
   styleUrls: ['./users.component.css']
 })
 export class UsersComponent implements OnInit {
+  displayedColumns = ['id', 'name', 'birthDate', 'country', 'address', 'isActive', 'salary', 'actions'];
+  users$;
 
-  displayedColumns: string[] = ['position', 'name', 'BirthDate', 'Country', 'Address', 'isActive', 'Salary', 'ProfilePicture'];
-  dataSource = users;
-  constructor(public dialog: MatDialog, private router: Router) {}
+  constructor(private dialog: MatDialog, private router: Router, public usersService: UserService) { }
 
   ngOnInit(): void {
-  }   
-  openDialog() {
-    this.dialog.open(AddUserFormComponent);
-  }
-  openProfilePage() {
-    this.router.navigate(['/profile', 23]);
+    // this.usersService.getUsers().subscribe(users => (this.users$ = users))
+    this.users$ = this.usersService.getUsers();
   }
 
+  openFormDialog(user?) {
+    this.dialog.open(AddUserFormComponent, { data: { user } });
+  }
+
+  openProfilePage(user: User) {
+    this.router.navigate(['/profile', user.id], { state: user });
+  }
 }
 

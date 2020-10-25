@@ -1,29 +1,42 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+
+import { User, UserService } from '../services/user.service';
+
+interface DialogData {
+  user: User;
+}
 
 @Component({
   selector: 'app-add-user-form',
   templateUrl: './add-user-form.component.html',
   styleUrls: ['./add-user-form.component.css']
 })
-
 export class AddUserFormComponent implements OnInit {
+  profileForm: FormGroup;
 
-  profileForm = new FormGroup({
-    name: new FormControl(''),
-    BirthDate: new FormControl(''),
-    Country: new FormControl(''),
-    Address: new FormControl(''),
-    Salary: new FormControl(''),
-    isActive: new FormControl(''),
-
-  });
-
-  constructor() { }
+  constructor(
+    private dialogRef: MatDialogRef<AddUserFormComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData,
+    private usersService: UserService
+  ) { }
 
   ngOnInit(): void {
+    const user = this.data?.user;
+    this.profileForm = new FormGroup({
+      name: new FormControl(user?.name || ''),
+      birthDate: new FormControl(user?.birthDate || ''),
+      country: new FormControl(user?.country || ''),
+      address: new FormControl(user?.address || ''),
+      salary: new FormControl(user?.salary || ''),
+      isActive: new FormControl(user?.isActive || ''),
+    });
   }
+
   onSubmit() {
-    console.log(this.profileForm.value);
+    const user = this.data?.user;
+    this.usersService.updateUsersList(this.profileForm.value, user?.id);
+    this.dialogRef.close();
   }
 }

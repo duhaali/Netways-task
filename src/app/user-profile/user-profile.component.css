@@ -1,0 +1,9 @@
+.contener {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 30px;
+}
+.user-info {
+    margin-top: 15px;
+}
