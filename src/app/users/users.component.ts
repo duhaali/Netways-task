@@ -2,7 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import {MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { AddUserFormComponent } from '../add-user-form/add-user-form.component';
 import users from "../mock-data/index.json"
-
+import { Router } from '@angular/router';
 export interface DialogData {
   animal: 'panda' | 'unicorn' | 'lion';
 }
@@ -48,12 +48,15 @@ export class UsersComponent implements OnInit {
 
   displayedColumns: string[] = ['position', 'name', 'BirthDate', 'Country', 'Address', 'isActive', 'Salary', 'ProfilePicture'];
   dataSource = users;
-  constructor(public dialog: MatDialog) {}
+  constructor(public dialog: MatDialog, private router: Router) {}
 
   ngOnInit(): void {
   }   
   openDialog() {
     this.dialog.open(AddUserFormComponent);
+  }
+  openProfilePage() {
+    this.router.navigate(['/profile', 23]);
   }
 
 }
