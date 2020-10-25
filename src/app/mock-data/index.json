@@ -1,0 +1,22 @@
+[
+  {
+    "position": 1,
+    "name": "ali",
+    "BirthDate": "15/5/1992",
+    "Country": "jordan",
+    "Address": "Amman",
+    "isActive": "true",
+    "Salary": "800$",
+    "ProfilePicture": "image1.jpg"
+  },
+  {
+    "position": 2,
+    "name": "alaa",
+    "BirthDate": "1/6/1995",
+    "Country": "jordan",
+    "Address": "Amman",
+    "isActive": "true",
+    "Salary": "1000$",
+    "ProfilePicture": "image1.jpg"
+  }
+]

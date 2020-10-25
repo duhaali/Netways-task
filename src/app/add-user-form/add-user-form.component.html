@@ -1,0 +1,39 @@
+<form class="form" [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+    <div class="rows">
+        <mat-form-field class="field" appearance="fill">
+            <mat-label>Name</mat-label>
+            <input matInput formControlName="name" required>
+        </mat-form-field>
+        <!-- <mat-form-field  class="field" appearance="fill">
+            <mat-label> Birth Date:</mat-label>
+            <input matInput formControlName="BirthDate">
+        </mat-form-field> -->
+        <mat-form-field appearance="fill">
+            <mat-label>Choose a date</mat-label>
+            <input matInput [matDatepicker]="BirthDate" formControlName="BirthDate">
+            <mat-datepicker-toggle matSuffix [for]="BirthDate"></mat-datepicker-toggle>
+            <mat-datepicker #BirthDate></mat-datepicker>
+        </mat-form-field>
+    </div>
+    <div class="rows">
+        <mat-form-field  class="field" appearance="fill">
+            <mat-label>Country</mat-label>
+            <input matInput  formControlName="Country" required>
+        </mat-form-field>
+        <mat-form-field  class="field" appearance="fill">
+            <mat-label>Address</mat-label>
+            <input matInput  formControlName="Address">
+        </mat-form-field>
+    </div>
+    <div class="rows">
+        <mat-form-field  class="field" appearance="fill">
+            <mat-label>Salary</mat-label>
+            <input matInput  formControlName="Salary">
+        </mat-form-field>
+    </div>
+    <div class="rows">
+        
+    </div>
+    
+    <button mat-raised-button type="submit" [disabled]="!profileForm.valid" >Submit</button>
+  </form>

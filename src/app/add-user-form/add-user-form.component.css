@@ -1,0 +1,10 @@
+.form {
+    width: 560px;
+}
+.rows {
+    display: flex;
+    justify-content: space-between;
+}
+.field {
+    width: 250px;
+}
