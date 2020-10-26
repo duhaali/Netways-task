@@ -18,7 +18,8 @@ export class UsersComponent implements OnInit {
 
   ngOnInit(): void {
     // this.usersService.getUsers().subscribe(users => (this.users$ = users))
-    this.users$ = this.usersService.getUsers();
+    this.users$ = this.usersService.getUsers();    
+    
   }
 
   openFormDialog(user?) {
@@ -27,6 +28,16 @@ export class UsersComponent implements OnInit {
 
   openProfilePage(user: User) {
     this.router.navigate(['/profile', user.id], { state: user });
+  }
+  deleteUser(user?){
+    let Users
+    this.users$.subscribe(data=> {
+      Users = data
+    });
+    let edetUser = Users.filter(_user => _user.id === user.id);
+    edetUser[0].isActive = false
+    const id = edetUser[0].id
+    this.usersService.updateUsersList(edetUser[0], id)
   }
 }
 

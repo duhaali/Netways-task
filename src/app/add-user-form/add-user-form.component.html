@@ -1,39 +1,42 @@
-<form class="form" [formGroup]="profileForm" (ngSubmit)="onSubmit()">
-    <div class="rows">
-        <mat-form-field class="field" appearance="fill">
-            <mat-label>Name</mat-label>
-            <input matInput formControlName="name" required>
-        </mat-form-field>
-        <mat-form-field appearance="fill">
-            <mat-label>Choose a date</mat-label>
-            <input matInput [matDatepicker]="birthDate" formControlName="birthDate">
-            <mat-datepicker-toggle matSuffix [for]="birthDate"></mat-datepicker-toggle>
-            <mat-datepicker #birthDate></mat-datepicker>
-        </mat-form-field>
-    </div>
-    <div class="rows">
-        <mat-form-field class="field" appearance="fill">
-            <mat-label>Country</mat-label>
-            <input matInput formControlName="country" required>
-        </mat-form-field>
-        <mat-form-field class="field" appearance="fill">
-            <mat-label>Address</mat-label>
-            <input matInput formControlName="address">
-        </mat-form-field>
-    </div>
-    <div class="rows">
-        <mat-form-field class="field" appearance="fill">
-            <mat-label>Salary</mat-label>
-            <input matInput formControlName="salary">
-        </mat-form-field>
-        <section class="field">
-            <mat-label>Profile Picture</mat-label>
-            <input type="file" (change)="setImage($event)">
-        </section>
-    </div>
-    <div class="rows">
-        <button mat-raised-button type="submit" [disabled]="!profileForm.valid" style="margin: auto;">
-            {{this.data?.user ? 'Update' : 'Add'}}
-        </button>
-    </div>
-</form>
+<div>
+    <h4>User form</h4>
+    <form class="form" [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+        <div class="rows">
+            <mat-form-field class="field" appearance="fill">
+                <mat-label>Name</mat-label>
+                <input matInput formControlName="name" required>
+            </mat-form-field>
+            <mat-form-field appearance="fill">
+                <mat-label>Choose a date</mat-label>
+                <input matInput [matDatepicker]="birthDate" formControlName="birthDate">
+                <mat-datepicker-toggle matSuffix [for]="birthDate"></mat-datepicker-toggle>
+                <mat-datepicker #birthDate></mat-datepicker>
+            </mat-form-field>
+        </div>
+        <div class="rows">
+            <mat-form-field class="field" appearance="fill">
+                <mat-label>Country</mat-label>
+                <input matInput formControlName="country" required>
+            </mat-form-field>
+            <mat-form-field class="field" appearance="fill">
+                <mat-label>Address</mat-label>
+                <input matInput formControlName="address">
+            </mat-form-field>
+        </div>
+        <div class="rows">
+            <mat-form-field class="field" appearance="fill">
+                <mat-label>Salary</mat-label>
+                <input matInput formControlName="salary">
+            </mat-form-field>
+            <section class="field">
+                <mat-label>Profile Picture</mat-label>
+                <input type="file" (change)="setImage($event)">
+            </section>
+        </div>
+        <div class="rows">
+            <button mat-raised-button type="submit" [disabled]="!profileForm.valid" style="margin: auto;">
+                {{this.data?.user ? 'Update' : 'Add'}}
+            </button>
+        </div>
+    </form>
+</div>

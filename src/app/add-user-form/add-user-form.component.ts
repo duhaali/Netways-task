@@ -42,7 +42,6 @@ export class AddUserFormComponent implements OnInit {
       ...this.profileForm.value,
       profilePicture: this.userProfilePicture
     }
-    console.log(newUser)
     this.usersService.updateUsersList(newUser, user?.id);
     this.dialogRef.close();
   }

@@ -8,3 +8,10 @@ table {
     width: 50px;
     margin: 5px 0;
 }
+.add-user {
+    display: flex;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 10px;
+
+}

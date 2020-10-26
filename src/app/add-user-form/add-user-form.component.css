@@ -8,3 +8,12 @@
 .field {
     width: 250px;
 }
+
+@media only screen and (max-width: 750px) {
+    .form {
+        width: 250px;
+    }
+    .rows {
+        flex-direction: column;
+    }
+  }
