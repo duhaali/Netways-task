@@ -1,9 +1,9 @@
-<button mat-raised-button (click)="openFormDialog()">Add New User</button>
-
 <table mat-table [dataSource]="users$" class="mat-elevation-z8">
-  <ng-container matColumnDef="id">
-    <th mat-header-cell *matHeaderCellDef> ID </th>
-    <td mat-cell *matCellDef="let element">{{element.id}}</td>
+  <ng-container matColumnDef="profilePicture">
+    <th mat-header-cell *matHeaderCellDef></th>
+    <td mat-cell *matCellDef="let element">
+      <img [src]="element.profilePicture" class="profile-picture" />
+    </td>
   </ng-container>
 
   <ng-container matColumnDef="name">
@@ -13,7 +13,7 @@
 
   <ng-container matColumnDef="birthDate">
     <th mat-header-cell *matHeaderCellDef> Birth Date</th>
-    <td mat-cell *matCellDef="let element">{{element.birthDate}}</td>
+    <td mat-cell *matCellDef="let element">{{element.birthDate | date}}</td>
   </ng-container>
 
   <ng-container matColumnDef="country">
@@ -33,7 +33,7 @@
 
   <ng-container matColumnDef="salary">
     <th mat-header-cell *matHeaderCellDef> Salary </th>
-    <td mat-cell *matCellDef="let element">{{element.salary}}</td>
+    <td mat-cell *matCellDef="let element">{{element.salary | currency}}</td>
   </ng-container>
 
   <ng-container matColumnDef="actions">
@@ -51,3 +51,5 @@
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
+
+<button mat-raised-button (click)="openFormDialog()">Add New User</button>
